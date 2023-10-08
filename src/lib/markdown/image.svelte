@@ -27,7 +27,7 @@
   caption={text}
   size="max-w-xs"
   alignment=""
-  imgClass="h-auto rounded-lg aspect-square object-none border border-dashed border-gray-400"
-  figClass="max-w-xs mr-auto ml-auto mt-2"
-  captionClass="mt-0 mb-2 py-0 text-md text-center text-gray-500 dark:text-gray-400"
+  imgClass="h-auto rounded-lg aspect-square object-none border border-dashed border-gray-400 mt-4"
+  figClass="max-w-xs mr-auto ml-auto"
+  captionClass="mt-0 mb-4 py-0 text-md text-center text-asperagus dark:text-apricot italic"
   />

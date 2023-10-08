@@ -28,6 +28,9 @@ const config = {
         tangelo: '#FB5012',
         verdigris: '#17BEBB',
         asperagus: '#749C75',
+        apricot: '#FAC5AD',
+        atomicTangerine: '#FA9E79',
+        mintCreme: '#E0E9E0',
       }
     }
   }

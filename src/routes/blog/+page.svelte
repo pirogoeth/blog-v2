@@ -6,7 +6,7 @@
   export let data;
 </script>
 
-<PageHeading text="blog posts" />
+<PageHeading text="blog posts" hClass="mb-6 text-center" />
 <ul>
   <!-- TODO: Skeleton here -->
   {#if data !== null}

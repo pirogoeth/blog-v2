@@ -20,30 +20,32 @@
   const updatedAt = DateTime.fromISO(post.metadata.post.updatedAt);
 </script>
 
-<PageHeading text={post.metadata.title} />
+<PageHeading text={post.metadata.title} hClass="mb-6 text-center text-richBlack dark:text-linen" />
 <div class="mx-auto">
-  <article class="container mx-auto max-w-3xl gap-6 py-4 px-4">
-    <P italic class="text-xs text-center">
+  <article class="container mx-auto max-w-3xl gap-6 py-4 px-4 text-richBlack dark:text-linen">
+    <P italic class="text-xs text-center text-inherit dark:text-inherit">
       written {createdAt.toLocaleString(DateTime.DATE_MED_WITH_WEEKDAY)} ⋅
       {#if createdAt !== updatedAt}
       updated {updatedAt.toLocaleString(DateTime.DATE_MED_WITH_WEEKDAY)} ⋅
       {/if}
-      {wordCount} words ⋅
-      {(wordCount / 225).toFixed(1)} minute read
+      {post.metadata.post.metrics.wordCount} words ⋅
+      {post.metadata.post.metrics.minutesRead} minute read
     </P>
-    <Hr classHr="w-48 h-1 mx-auto my-4 rounded md:my-10 dark:bg-linen"/>
-    <Markdown
-      source={post.text ?? ''}
-      renderers={{
-        code: MarkdownCode,
-        codespan: MarkdownCodespan,
-        heading: MarkdownHeading,
-        image: MarkdownImage,
-        paragraph: MarkdownParagraph,
-        link: MarkdownLink,
-        list: MarkdownList,
-        listitem: MarkdownListItem,
-      }}
-      />
+    <Hr classHr="w-48 h-1 mx-auto my-4 rounded md:my-10 bg-verdigris dark:bg-verdigris"/>
+    <div class="text-richBlack dark:text-linen">
+      <Markdown
+        source={post.text ?? ''}
+        renderers={{
+          code: MarkdownCode,
+          codespan: MarkdownCodespan,
+          heading: MarkdownHeading,
+          image: MarkdownImage,
+          paragraph: MarkdownParagraph,
+          link: MarkdownLink,
+          list: MarkdownList,
+          listitem: MarkdownListItem,
+        }}
+        />
+      </div>
   </article>
 </div>

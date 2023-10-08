@@ -28,4 +28,10 @@ export interface PostDetail {
   id: string,
   isPublic: string,
   updatedAt: string,
+  metrics: PostMetrics,
+};
+
+export interface PostMetrics {
+  minutesRead: number,
+  wordCount: number,
 };

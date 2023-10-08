@@ -1,5 +1,5 @@
-import type { RedisClientType, SetOptions } from 'redis';
-import { createClient } from 'redis';
+import { type ICache } from './cache';
+
 import { Logger, type ILogObj } from 'tslog';
 
 const log = new Logger<ILogObj>();
@@ -8,7 +8,7 @@ export interface Options {
   url: string,
 };
 
-export class RedisCache {
+export class RedisCache implements ICache {
   client: RedisClientType
 
   constructor(opts: Options) {
@@ -25,9 +25,9 @@ export class RedisCache {
     return await this.client.get(key);
   }
 
-  async keySet(key: string, value: string, options?: SetOptions) {
+  async keySet<T=SetOptions>(key: string, value: string, options?: T) {
     log.silly(`Cache SET ${key} with ${options} => ${value.slice(0, 30)}...`);
-    return await this.client.set(key, value, options);
+    return await this.client.set(key, value, options ?? {});
   }
 
   async setAdd(key: string, values: string[]): Promise<number> {

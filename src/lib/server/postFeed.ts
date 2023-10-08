@@ -129,7 +129,7 @@ export class GistPostFeed implements PostFeed {
           avatarUrl: gist.owner?.avatar_url,
           name: gist.owner?.name,
           email: gist.owner?.email,
-        }
+        },
       }}
     );
 
@@ -139,6 +139,12 @@ export class GistPostFeed implements PostFeed {
       log.silly(`Fetching post text from ${postTextUrl}`);
       rawPost = await (await (await fetch(postTextUrl!)).blob()).text();
       await this.cache?.keySet(`${cacheKeys.rawPost}:${digestText(metadataUrl)}`, rawPost);
+    }
+
+    let splitText = rawPost?.split(' ') ?? [];
+    metadata.post.metrics = {
+      minutesRead: (splitText.length/ 225).toFixed(1),
+      wordCount: splitText.length,
     }
 
     let synopsis: string;

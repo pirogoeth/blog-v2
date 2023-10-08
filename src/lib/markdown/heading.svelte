@@ -11,9 +11,9 @@
   const escapedText = text.toLowerCase().replace(/[^\w]+/g, '-');
 </script>
 
-<Heading tag={`h${clampedDepth}`} class="py-2">
-  <A name={escapedText} aClass="anchor" href={`#${escapedText}`}>
-    <Span underline class="decoration-1 dark:decoration-linen mb-1 pb-1">
+<Heading tag={`h${clampedDepth}`} class="py-2 text-inherit dark:text-inherit">
+  <A name={escapedText} class="text-inherit dark:text-inherit" aClass="anchor" href={`#${escapedText}`}>
+    <Span underline class="text-inherit dark:text-inherit" decorationClass="decoration-2 decoration-verdigris dark:decoration-verdigris mb-1 pb-1">
       {text}
     </Span>
   </A>
