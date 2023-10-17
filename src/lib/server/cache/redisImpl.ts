@@ -27,7 +27,7 @@ export class RedisCache implements ICache {
   }
 
   async keySet<T=SetOptions>(key: string, value: string, options?: T) {
-    log.silly(`Cache SET ${key} with ${options} => ${value.slice(0, 30)}...`);
+    log.silly(`Cache SET ${key} with options=${options} => ${value.slice(0, 30)}...`);
     return await this.client.set(key, value, options ?? {});
   }
 

@@ -1,16 +1,16 @@
 export interface Post {
   metadata: PostMetadata,
   synopsis: string,
-  text?: string,
-  html?: string, 
+  text: string,
 };
 
 export interface PostMetadata {
   categories: Array<string>,
-  post: PostDetail,
+  detail: PostDetail,
+  metrics: PostMetrics,
   title: string,
   coverImage?: string,
-  slug?: string,
+  slug: string,
   synopsis?: string,
 };
 
@@ -28,10 +28,9 @@ export interface PostDetail {
   id: string,
   isPublic: string,
   updatedAt: string,
-  metrics: PostMetrics,
 };
 
 export interface PostMetrics {
-  minutesRead: number,
-  wordCount: number,
+  minutesRead: number|string,
+  wordCount: number|string,
 };

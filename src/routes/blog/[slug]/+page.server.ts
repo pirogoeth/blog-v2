@@ -1,17 +1,14 @@
 import { feed } from '$lib/server';
-import type { PostFeedResponse } from '$lib/server/postFeed';
+import type { Post } from '$lib/server/models';
 import { error } from '@sveltejs/kit';
 import { Logger, type ILogObj } from 'tslog';
 
 const log = new Logger<ILogObj>();
 
-export async function load({ parent, params }): Promise<PostFeedResponse> {
-  const parentData = await parent();
-  console.log(parentData);
-  const post = parentData.posts.find(post => post.metadata.slug === params.slug);
-  if (!post) {
-    throw error(404, 'post not found');
-  }
-
-  return { posts: [post], count: 1 };
+export async function load({ params, url }): Promise<Post> {
+  const ignoreCached = url.searchParams.get('ignoreCached') ? true : false;
+  return await feed.fetchPostBySlug(params.slug, {
+    ignoreCached,
+    returnPostText: true,
+  });
 }

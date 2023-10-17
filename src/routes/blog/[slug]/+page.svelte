@@ -15,9 +15,8 @@
 
   export let data;
   const post = data.posts[0];
-  const wordCount = post.text?.split(' ').length ?? 0;
-  const createdAt = DateTime.fromISO(post.metadata.post.createdAt);
-  const updatedAt = DateTime.fromISO(post.metadata.post.updatedAt);
+  const createdAt = DateTime.fromISO(post.metadata.detail.createdAt);
+  const updatedAt = DateTime.fromISO(post.metadata.detail.updatedAt);
 </script>
 
 <PageHeading text={post.metadata.title} hClass="mb-6 text-center text-richBlack dark:text-linen" />
@@ -28,8 +27,8 @@
       {#if createdAt !== updatedAt}
       updated {updatedAt.toLocaleString(DateTime.DATE_MED_WITH_WEEKDAY)} ⋅
       {/if}
-      {post.metadata.post.metrics.wordCount} words ⋅
-      {post.metadata.post.metrics.minutesRead} minute read
+      {post.metadata.metrics.wordCount} words ⋅
+      {post.metadata.metrics.minutesRead} minute read
     </P>
     <Hr classHr="w-48 h-1 mx-auto my-4 rounded md:my-10 bg-verdigris dark:bg-verdigris"/>
     <div class="text-richBlack dark:text-linen">

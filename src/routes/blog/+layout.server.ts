@@ -4,9 +4,13 @@ import { Logger, type ILogObj } from 'tslog';
 
 const log = new Logger<ILogObj>();
 
-export async function load(): Promise<PostFeedResponse> {
+export async function load({ url }): Promise<PostFeedResponse> {
   let ping = await feed.ping();
   log.info(`Post feed ping: ${ping.message}`);
 
-  return await feed.fetchPosts();
+  const ignoreCached = url.searchParams.get('ignoreCached') ? true : false;
+  return await feed.fetchPosts({
+    returnPostText: false,
+    ignoreCached,
+  });
 }
