@@ -9,7 +9,7 @@
 {#if loading}
   <TextPlaceholder size="xxl" class="mt-8" />
 {:else}
-  <li class="mx-auto">
+  <li class="mx-auto pb-4">
     <a href="/blog/{post.metadata.slug}">
       <div class="container mx-auto flex items-start columns-8 gap-6 py-4 px-4 rounded transition hover:duration-150 hover:ease-in-out bg-slate-50 hover:bg-linen dark:bg-slate-800 dark:hover:bg-richBlack">
         <div class="flex-none">

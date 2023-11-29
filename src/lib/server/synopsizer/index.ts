@@ -1,7 +1,9 @@
 import { env } from '$env/dynamic/private';
-import { type Synopsizer } from './synopsizer';
+import type { Synopsizer } from './synopsizer';
 import { OpenAISynopsizer, type OpenAISynopsizerOptions } from './openai';
 import { TextTruncatingSynopsizer, type TextTruncatingSynopsizerOptions } from './textTrunc';
+
+export type { Synopsizer } from './synopsizer';
 
 export function init(): Synopsizer {
   switch (env.SYNOPSIZER ?? TextTruncatingSynopsizer.name) {

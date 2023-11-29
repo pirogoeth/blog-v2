@@ -1,4 +1,4 @@
-import { type ICache } from './cache';
+import type { ICache } from './cache';
 import type { RedisClientType, SetOptions } from 'redis';
 import { createClient } from 'redis';
 import { Logger, type ILogObj } from 'tslog';

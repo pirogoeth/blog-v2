@@ -5,7 +5,7 @@ import { Logger, type ILogObj } from 'tslog';
 
 const log = new Logger<ILogObj>();
 
-export async function load({ params, url }): Promise<Post> {
+export async function load({ params, url }): Promise<Post|null> {
   const ignoreCached = url.searchParams.get('ignoreCached') ? true : false;
   return await feed.fetchPostBySlug(params.slug, {
     ignoreCached,

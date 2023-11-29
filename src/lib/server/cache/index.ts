@@ -1,2 +1,2 @@
 export { type ICache } from './cache';
-export { RedisCache } from './redisImpl';
+export { RedisCache, type Options as RedisCacheOptions } from './redisImpl';

@@ -12,7 +12,11 @@ const config = {
         // If your environment is not supported or you settled on a specific environment, switch out the adapter.
         // See https://kit.svelte.dev/docs/adapters for more information about adapters.
         adapter: adapter(),
-    }
+    },
+
+    // Highlight.io SDK requests that CSS relative paths are disabled
+    // Docs: https://kit.svelte.dev/docs/configuration#paths
+    paths: { relative: false },
 };
 
 export default config;
