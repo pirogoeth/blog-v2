@@ -6,7 +6,7 @@
   export let lang: string;
   export let text: string;
 
-  const highlightRule = languages[lang.toLowerCase()] ?? null;
+  const highlightRule = languages[lang.toLowerCase()] ?? languages['plaintext'];
 </script>
 
 <svelte:head>

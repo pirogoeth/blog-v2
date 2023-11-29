@@ -24,7 +24,6 @@ export interface PostDetail {
   author: PostAuthor,
   createdAt: string,
   description: string,
-  etag: string,
   id: string,
   isPublic: string,
   updatedAt: string,

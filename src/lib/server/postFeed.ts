@@ -1,8 +1,8 @@
 import { Octokit } from 'octokit';
-import { RedisCache, type Options as RedisCacheOptions } from './cache';
+import { RedisCache, type RedisCacheOptions } from './cache';
 import type { Post, PostDetail, PostMetadata } from './models';
 import { Logger, type ILogObj } from 'tslog';
-import { type RestEndpointMethodTypes } from "@octokit/plugin-rest-endpoint-methods";
+import type { RestEndpointMethodTypes } from "@octokit/plugin-rest-endpoint-methods";
 import * as yaml from 'js-yaml'
 import type { Synopsizer } from './synopsizer';
 import { digestText } from './utils';
@@ -188,18 +188,26 @@ export class GistPostFeed implements PostFeed<PostFetchOptions> {
       await this.cache?.keySet(`${cacheKeys.rawMetadata}:${digestText(metadataUrl)}`, rawMetadata);
     }
 
-    let metadata: PostMetadata = {};
-    metadata.detail = {
-      createdAt: gist.created_at,
-      description: gist.description,
-      id: gist.id,
-      isPublic: gist.public,
-      updatedAt: gist.updated_at,
-      author: {
-        avatarUrl: gist.owner?.avatar_url,
-        name: gist.owner?.name,
-        email: gist.owner?.email,
+    let metadata: PostMetadata = {
+      categories: [],
+      detail: {
+        createdAt: gist.created_at,
+        description: gist.description ?? '',
+        id: gist.id,
+        isPublic: gist.public.toString(),
+        updatedAt: gist.updated_at,
+        author: {
+          avatarUrl: gist.owner?.avatar_url,
+          name: gist.owner?.name ?? 'Unnamed Author',
+          email: gist.owner?.email ?? 'not-an-email@example.org',
+        },
       },
+      metrics: {
+        minutesRead: 0,
+        wordCount: 0,
+      },
+      title: '',
+      slug: '',
     };
     if (rawMetadata !== undefined) {
       metadata = Object.assign(metadata, yaml.load(rawMetadata));

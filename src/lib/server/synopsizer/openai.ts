@@ -1,6 +1,6 @@
 import OpenAI from 'openai';
 import { env } from '$env/dynamic/private';
-import { type RedisCache } from '../cache';
+import type { RedisCache } from '../cache';
 import { Logger, type ILogObj } from 'tslog';
 import { Synopsizer } from './synopsizer';
 
